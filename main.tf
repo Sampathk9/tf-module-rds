@@ -36,13 +36,9 @@ resource "aws_security_group" "rds" {
 
 
 resource "aws_rds_cluster" "rds" {
-  cluster_identifier = "${var.env}-rds"
-  engine             = var.engine
-  engine_version     = var.engine_version
-
-  //  storage_type              = "io1"
-  allocated_storage = 20
-  //  iops                      = 1000
+  cluster_identifier     = "${var.env}-rds"
+  engine                 = var.engine
+  engine_version         = var.engine_version
   master_username        = data.aws_ssm_parameter.DB_ADMIN_USER.value
   master_password        = data.aws_ssm_parameter.DB_ADMIN_PASS.value
   db_subnet_group_name   = aws_db_subnet_group.default.name
