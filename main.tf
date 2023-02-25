@@ -54,3 +54,6 @@ resource "aws_rds_cluster" "rds" {
 
 }
 
+output "rds" {
+  value = aws_rds_cluster.rds
+}
